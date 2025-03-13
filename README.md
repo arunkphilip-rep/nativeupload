@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# AVAASS - Audio-Visual Assistive Speech System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+AVAASS is a stutter aid application designed for people who suffer from stammering. The application allows users to communicate by whispering to their device, which then processes and converts this whispered input into clear, fluent speech.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Whisper Detection**: Special audio processing that detects and optimizes whispered speech
+- **Noise Reduction**: Using RNNoise-wasm to clean up microphone input
+- **ASR (Automatic Speech Recognition)**: Nvidia Parakeet CTC 0.6B model for accurate transcription
+- **Predictive Text**: Intelligent word prediction to complete sentences
+- **Voice Cloning TTS**: Coqui's XTTS v2 for converting text to natural speech in the user's own voice
+- **Facial Animation**: Visual representation of speech with animated facial movements
+- **Social Sharing**: Easy sharing of transcribed audio to platforms like Telegram, WhatsApp, and Twitter
 
-### `npm start`
+## Technical Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Frontend**: React Native with Expo
+- **Backend**: Flask with SocketIO for real-time communication
+- **ML Models**:
+  - ASR: Nvidia Parakeet CTC 0.6B
+  - TTS: Coqui XTTS v2
+  - Noise Reduction: RNNoise-wasm
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js (v14 or higher)
+- Python 3.8+ with pip
+- Expo CLI
 
-### `npm run build`
+### Backend Setup
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+cd backend
+pip install -r requirements.txt
+python app.py
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The backend server will start on http://localhost:5000
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Frontend Setup
 
-### `npm run eject`
+```bash
+npm install
+expo start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## How It Works
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. User starts the application and whispers into their device
+2. The app detects whispered speech and processes it in real-time
+3. Audio is cleaned with RNNoise and sent to the backend
+4. The backend transcribes the whisper using Parakeet ASR
+5. The transcribed text is converted to speech using XTTS v2
+6. The synthesized speech is played back to the listener with facial animations
+7. Users can share transcriptions via multiple platforms
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Accessibility Features
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Visual feedback with facial animations
+- Adjustable microphone sensitivity for different whispering styles
+- Dark/light theme support
+- Text size customization
 
-## Learn More
+## License
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[MIT License](LICENSE)
